@@ -1,3 +1,5 @@
+//For exit from the program or to end the program enter floor number in negative after lift is createdd.
+
 import java.util.Scanner;
 import java.lang.*;
 
@@ -13,6 +15,7 @@ class printDelay{
 }
 
 // For Number of floors, we want to build the lift
+// as well as for extra number of floor , if any case we require to built lift on extra floor in future
 // Lift Floor
 class Total_Floor {
     Scanner s = new Scanner(System.in);
@@ -20,7 +23,7 @@ class Total_Floor {
     // Floor Input & print and default it is on the ground floor & return total floor
     short total_floor() throws InterruptedException {
         //Lift Floor
-        short f_no;
+        short f_no; //total number of floor we want to built
         String des = "-------------------------------------------------------------------------";
         printDelay.printWithDelay(des, 20);
         System.out.println("\tWrite down the number of floors of the lift to be built");
@@ -82,12 +85,13 @@ class Total_Floor {
     }
 }
 
+//All require condition (i.e floor number is not less than zero or entered lift floor number is not more than the total floor of lift.)
 class Floor_No extends Total_Floor {
 
     // Input(Where we want to go) & print where we arrive
     void floor_No(short current_floor, short f_no) throws InterruptedException {
         //short current_floor = 0;
-        short i, f_n;
+        short i, f_n; //f_n stands for when we want to go (i.e. if we are currently on ground floor and we want to go on 2nd floor then this 2 will store in this variable.)
         do {
             System.out.print("\nEnter Floor Number where you want to go : ");
             f_n = s.nextShort();
@@ -159,6 +163,7 @@ class Floor_No extends Total_Floor {
     }
 }
 
+//It is working of how lift service available on extra floor in different scenario.
 class Rebuild extends Floor_No {
 
 
@@ -187,12 +192,16 @@ class Rebuild extends Floor_No {
         }
     }
 }
+
+//for clear the screen
 class clr{
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 }
+
+//Main class
 public class Lift extends Rebuild {
     public static void main(String[] args) throws InterruptedException {
         clr.clearScreen();
